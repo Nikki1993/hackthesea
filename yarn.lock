@@ -258,6 +258,10 @@ angular-cli@1.0.0-beta.19-3:
     webpack-merge "^0.14.0"
     zone.js "^0.6.23"
 
+angular2-mdl:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/angular2-mdl/-/angular2-mdl-2.3.1.tgz#f58c33ea8a9f4671220f3d1c0e62f55d34282b50"
+
 angular2-template-loader@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/angular2-template-loader/-/angular2-template-loader-0.5.0.tgz#a16db190faaf9f8e8e9410f3c468370de75127a6"

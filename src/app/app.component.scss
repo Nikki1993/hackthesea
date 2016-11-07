@@ -1,0 +1,10 @@
+@import './app.colors.scss';
+
+.drawer-background {
+  background: $color-primary;
+  color: $color-text;
+}
+
+.mdl-layout__drawer {
+  border: none;
+}

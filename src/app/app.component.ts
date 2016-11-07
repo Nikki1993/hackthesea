@@ -1,3 +1,4 @@
+import { GLOBAL_VARIABLES } from './globals';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,6 +6,10 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent {
-  title = 'app works!';
+
+  title = GLOBAL_VARIABLES.APP_TITLE;
+
+  constructor() {}
 }
