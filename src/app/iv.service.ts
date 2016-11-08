@@ -7,4 +7,7 @@ export class IvService {
 
   constructor() { }
 
+  public log(LogMsg: string) {
+    console.log(LogMsg);
+  }
 }

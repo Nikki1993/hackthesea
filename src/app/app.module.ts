@@ -16,6 +16,7 @@ import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { EnvironmentComponent } from './main/environment/environment.component';
 import { GaugesComponent } from './main/dashboard/gauges/gauges.component';
 import { ShipOverviewComponent } from './main/dashboard/ship-overview/ship-overview.component';
+import { TaskOverviewComponent } from './main/dashboard/task-overview/task-overview.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ShipOverviewComponent } from './main/dashboard/ship-overview/ship-overv
     DashboardComponent,
     EnvironmentComponent,
     GaugesComponent,
-    ShipOverviewComponent
+    ShipOverviewComponent,
+    TaskOverviewComponent
   ],
   imports: [
     BrowserModule,
