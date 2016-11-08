@@ -14,6 +14,8 @@ import { FooterComponent } from './footer/footer.component';
 import { ShipComponent } from './main/ship/ship.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { EnvironmentComponent } from './main/environment/environment.component';
+import { GaugesComponent } from './main/dashboard/gauges/gauges.component';
+import { ShipOverviewComponent } from './main/dashboard/ship-overview/ship-overview.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { EnvironmentComponent } from './main/environment/environment.component';
     FooterComponent,
     ShipComponent,
     DashboardComponent,
-    EnvironmentComponent
+    EnvironmentComponent,
+    GaugesComponent,
+    ShipOverviewComponent
   ],
   imports: [
     BrowserModule,
