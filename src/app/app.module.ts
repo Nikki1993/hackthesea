@@ -1,3 +1,4 @@
+import { routing } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +11,9 @@ import { DrawerComponent } from './drawer/drawer.component';
 
 import { IvService } from './iv.service';
 import { FooterComponent } from './footer/footer.component';
+import { ShipComponent } from './main/ship/ship.component';
+import { DashboardComponent } from './main/dashboard/dashboard.component';
+import { EnvironmentComponent } from './main/environment/environment.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +21,16 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     MainComponent,
     DrawerComponent,
-    FooterComponent
+    FooterComponent,
+    ShipComponent,
+    DashboardComponent,
+    EnvironmentComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    routing
   ],
   providers: [IvService],
   bootstrap: [AppComponent]
