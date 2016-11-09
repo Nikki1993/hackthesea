@@ -17,6 +17,7 @@ import { EnvironmentComponent } from './main/environment/environment.component';
 import { GaugesComponent } from './main/dashboard/gauges/gauges.component';
 import { ShipOverviewComponent } from './main/dashboard/ship-overview/ship-overview.component';
 import { TaskOverviewComponent } from './main/dashboard/task-overview/task-overview.component';
+import { RiskLevelDirective } from './main/dashboard/task-overview/risk-level.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TaskOverviewComponent } from './main/dashboard/task-overview/task-overv
     EnvironmentComponent,
     GaugesComponent,
     ShipOverviewComponent,
-    TaskOverviewComponent
+    TaskOverviewComponent,
+    RiskLevelDirective
   ],
   imports: [
     BrowserModule,
