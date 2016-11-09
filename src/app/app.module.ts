@@ -6,11 +6,9 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { MainComponent } from './main/main.component';
 import { DrawerComponent } from './drawer/drawer.component';
 
 import { IvService } from './iv.service';
-import { FooterComponent } from './footer/footer.component';
 import { ShipComponent } from './main/ship/ship.component';
 import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { EnvironmentComponent } from './main/environment/environment.component';
@@ -23,9 +21,7 @@ import { RiskLevelDirective } from './main/dashboard/task-overview/risk-level.di
   declarations: [
     AppComponent,
     HeaderComponent,
-    MainComponent,
     DrawerComponent,
-    FooterComponent,
     ShipComponent,
     DashboardComponent,
     EnvironmentComponent,
