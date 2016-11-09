@@ -1,3 +1,4 @@
+import { setInterval } from 'timers';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -17,5 +18,4 @@ export class TaskOverviewComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-
 }

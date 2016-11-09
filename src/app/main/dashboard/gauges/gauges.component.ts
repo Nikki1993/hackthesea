@@ -1,3 +1,4 @@
+import { setInterval } from 'timers';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import * as c3 from 'c3';
 
@@ -8,13 +9,43 @@ import * as c3 from 'c3';
 })
 export class GaugesComponent implements OnInit, AfterViewInit {
 
+  chart_1: any;
+  chart_2: any;
+  chart_3: any;
+  chart_4: any;
+  chart_interval: number;
+
   constructor() {
+    this.chart_interval = 5000;
   }
 
   ngOnInit() {}
 
+  gaugeValues() {
+    setInterval(() => {
+      this.chart_1.load({
+      columns: [['data', (Math.random() * 100) + 1]]
+    });
+    }, this.chart_interval);
+    setInterval(() => {
+      this.chart_2.load({
+        columns: [['data', (Math.random() * 100) + 1]]
+      });
+    }, this.chart_interval + 1000);
+    setInterval(() => {
+      this.chart_3.load({
+        columns: [['data', (Math.random() * 100) + 1]]
+      });
+    }, this.chart_interval + 2000);
+    setInterval(() => {
+      this.chart_4.load({
+        columns: [['data', (Math.random() * 100) + 1]]
+      });
+    }, this.chart_interval + 3000);
+  }
+
   ngAfterViewInit () {
-      c3.generate({
+      this.chart_1 = c3.generate({
       bindto: '#chart_1',
       data: {
         columns: [
@@ -47,7 +78,7 @@ export class GaugesComponent implements OnInit, AfterViewInit {
       }
     });
 
-    c3.generate({
+    this.chart_2 = c3.generate({
       bindto: '#chart_2',
       data: {
         columns: [
@@ -80,7 +111,7 @@ export class GaugesComponent implements OnInit, AfterViewInit {
       }
     });
 
-    c3.generate({
+    this.chart_3 = c3.generate({
       bindto: '#chart_3',
       data: {
         columns: [
@@ -113,7 +144,7 @@ export class GaugesComponent implements OnInit, AfterViewInit {
       }
     });
 
-    c3.generate({
+    this.chart_4 = c3.generate({
       bindto: '#chart_4',
       data: {
         columns: [
@@ -145,5 +176,6 @@ export class GaugesComponent implements OnInit, AfterViewInit {
         height: 180
       }
     });
+    this.gaugeValues();
   }
 }
