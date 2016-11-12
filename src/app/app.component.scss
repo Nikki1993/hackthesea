@@ -1,4 +1,4 @@
-@import './app.colors.scss';
+@import './app.colors';
 
 .drawer-background {
   background: $color-primary;
@@ -6,5 +6,5 @@
 }
 
 .mdl-layout__drawer {
-  border: none;
+  border: 0;
 }

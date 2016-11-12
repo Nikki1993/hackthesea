@@ -1,4 +1,4 @@
-import { setInterval } from 'timers';
+import { IvService } from '../../../iv.service';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import * as c3 from 'c3';
 
@@ -10,83 +10,59 @@ import * as c3 from 'c3';
 export class GaugesComponent implements OnInit, AfterViewInit {
 
   chart_1: any;
-  chart_2: any;
-  chart_3: any;
-  chart_4: any;
   chart_interval: number;
 
-  constructor() {
-    this.chart_interval = 5000;
+  constructor(private ivService: IvService) {
+    this.chart_interval = 2000;
   }
 
   ngOnInit() {}
 
   gaugeValues() {
     setInterval(() => {
+
+      // this.ivService.getData().subscribe(
+      //   (data: any) => this.ivService.setRawFoS(data)
+      // );
+
+      this.ivService.setRawFoS(2100); // dummy value for testing TODO remove later
+
+      if (this.ivService.getRawFoS() <= 2199) {
+        this.ivService.setProcessedFoS(0.1);
+      } else if (this.ivService.getRawFoS() > 2199 && this.ivService.getRawFoS() <= 2299) {
+        this.ivService.setProcessedFoS(0.4);
+      } else if (this.ivService.getRawFoS() > 2300 && this.ivService.getRawFoS() <= 2399) {
+        this.ivService.setProcessedFoS(0.8);
+      } else if (this.ivService.getRawFoS() > 2400 && this.ivService.getRawFoS() <= 2500) {
+        this.ivService.setProcessedFoS(1);
+      } else {
+        this.ivService.setProcessedFoS(1.1);
+      }
       this.chart_1.load({
-      columns: [['data', (Math.random() * 100) + 1]]
-    });
+        columns: [
+          ['FoS', this.ivService.getProcessedFoS()]
+        ]
+      });
     }, this.chart_interval);
-    setInterval(() => {
-      this.chart_2.load({
-        columns: [['data', (Math.random() * 100) + 1]]
-      });
-    }, this.chart_interval + 1000);
-    setInterval(() => {
-      this.chart_3.load({
-        columns: [['data', (Math.random() * 100) + 1]]
-      });
-    }, this.chart_interval + 2000);
-    setInterval(() => {
-      this.chart_4.load({
-        columns: [['data', (Math.random() * 100) + 1]]
-      });
-    }, this.chart_interval + 3000);
   }
 
-  ngAfterViewInit () {
-      this.chart_1 = c3.generate({
+  ngAfterViewInit() {
+    this.chart_1 = c3.generate({
       bindto: '#chart_1',
       data: {
         columns: [
-          ['data', 25]
+          ['FoS', 0.00]
         ],
         type: 'gauge'
       },
       gauge: {
-        //        label: {
-        //            format: function(value, ratio) {
-        //                return value;
-        //            },
-        //            show: false // to turn off the min/max labels.
-        //        },
-        //    min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
-        //    max: 100, // 100 is default
-        //    units: ' %',
-        //    width: 39 // for adjusting arc thickness
-      },
-      color: {
-        pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
-        threshold: {
-          //            unit: 'value', // percentage is default
-          //            max: 200, // 100 is default
-          values: [30, 60, 90, 100]
+        max: 1.1,
+        units: '',
+        label: {
+          format: (value, ratio) => {
+            return value; // returning here the value and not the ratio
+          }
         }
-      },
-      size: {
-        height: 180
-      }
-    });
-
-    this.chart_2 = c3.generate({
-      bindto: '#chart_2',
-      data: {
-        columns: [
-          ['data', 50]
-        ],
-        type: 'gauge'
-      },
-      gauge: {
         //        label: {
         //            format: function(value, ratio) {
         //                return value;
@@ -99,77 +75,11 @@ export class GaugesComponent implements OnInit, AfterViewInit {
         //    width: 39 // for adjusting arc thickness
       },
       color: {
-        pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
+        pattern: ['#60B044', '#F6C600', '#F97600', '#FF0000'], // the three color levels for the percentage values.
         threshold: {
-          //            unit: 'value', // percentage is default
-          //            max: 200, // 100 is default
-          values: [30, 60, 90, 100]
-        }
-      },
-      size: {
-        height: 180
-      }
-    });
-
-    this.chart_3 = c3.generate({
-      bindto: '#chart_3',
-      data: {
-        columns: [
-          ['data', 75]
-        ],
-        type: 'gauge'
-      },
-      gauge: {
-        //        label: {
-        //            format: function(value, ratio) {
-        //                return value;
-        //            },
-        //            show: false // to turn off the min/max labels.
-        //        },
-        //    min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
-        //    max: 100, // 100 is default
-        //    units: ' %',
-        //    width: 39 // for adjusting arc thickness
-      },
-      color: {
-        pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
-        threshold: {
-          //            unit: 'value', // percentage is default
-          //            max: 200, // 100 is default
-          values: [30, 60, 90, 100]
-        }
-      },
-      size: {
-        height: 180
-      }
-    });
-
-    this.chart_4 = c3.generate({
-      bindto: '#chart_4',
-      data: {
-        columns: [
-          ['data', 100]
-        ],
-        type: 'gauge'
-      },
-      gauge: {
-        //        label: {
-        //            format: function(value, ratio) {
-        //                return value;
-        //            },
-        //            show: false // to turn off the min/max labels.
-        //        },
-        //    min: 0, // 0 is default, //can handle negative min e.g. vacuum / voltage / current flow / rate of change
-        //    max: 100, // 100 is default
-        //    units: ' %',
-        //    width: 39 // for adjusting arc thickness
-      },
-      color: {
-        pattern: ['#FF0000', '#F97600', '#F6C600', '#60B044'], // the three color levels for the percentage values.
-        threshold: {
-          //            unit: 'value', // percentage is default
-          //            max: 200, // 100 is default
-          values: [30, 60, 90, 100]
+          unit: 'value', //            unit: 'value', // percentage is default
+          max: 1.1, //            max: 200, // 100 is default
+          values: [0.15, 0.3, 0.7, 0.9]
         }
       },
       size: {
