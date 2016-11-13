@@ -21,19 +21,19 @@ export class GaugesComponent implements OnInit, AfterViewInit {
   gaugeValues() {
     setInterval(() => {
 
-      // this.ivService.getData().subscribe(
-      //   (data: any) => this.ivService.setRawFoS(data)
-      // );
+      this.ivService.getData().subscribe(
+        (data: any) => this.ivService.setRawFoS(data)
+      );
 
-      this.ivService.setRawFoS(2100); // dummy value for testing TODO remove later
+      // this.ivService.setRawFoS(2100); // dummy value for testing TODO remove later
 
       if (this.ivService.getRawFoS() <= 2199) {
         this.ivService.setProcessedFoS(0.1);
-      } else if (this.ivService.getRawFoS() > 2199 && this.ivService.getRawFoS() <= 2299) {
+      } else if (this.ivService.getRawFoS() >= 2199 && this.ivService.getRawFoS() <= 2299) {
         this.ivService.setProcessedFoS(0.4);
-      } else if (this.ivService.getRawFoS() > 2300 && this.ivService.getRawFoS() <= 2399) {
+      } else if (this.ivService.getRawFoS() >= 2300 && this.ivService.getRawFoS() <= 2399) {
         this.ivService.setProcessedFoS(0.8);
-      } else if (this.ivService.getRawFoS() > 2400 && this.ivService.getRawFoS() <= 2500) {
+      } else if (this.ivService.getRawFoS() >= 2400 && this.ivService.getRawFoS() <= 2500) {
         this.ivService.setProcessedFoS(1);
       } else {
         this.ivService.setProcessedFoS(1.1);
@@ -79,7 +79,7 @@ export class GaugesComponent implements OnInit, AfterViewInit {
         threshold: {
           unit: 'value', //            unit: 'value', // percentage is default
           max: 1.1, //            max: 200, // 100 is default
-          values: [0.15, 0.3, 0.7, 0.9]
+          values: [0.15, 0.41, 0.81, 0.99]
         }
       },
       size: {

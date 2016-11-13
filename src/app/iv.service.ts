@@ -5,7 +5,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class IvService {
 
-  FoSRaw: number = 0.00; // initial value
+  FoSRaw: number; // initial value
   FoSProcessed: number;
 
   // Intellegent Vessel = IV... I am so funny xD

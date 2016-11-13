@@ -1,9 +1,13 @@
 <div class="mdl-grid">
   <div class="mdl-cell mdl-cell--12-col mdl-grid mdl-shadow--2dp center-element ship-content">
     <img src="assets/ship.png" alt="ship">
-    <i id="tt1" class="material-icons">warning</i>
+    <i [hidden]="!warn" id="tt1" class="material-icons">warning</i>
     <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" data-mdl-for="tt1">
-      Warning, cargo is in danger!
+      Warning, cargo is in danger! Leave the area!
+    </div>
+    <i [hidden]="!warn" id="tt2" class="material-icons">android</i>
+    <div class="mdl-tooltip mdl-tooltip--large mdl-tooltip--top" data-mdl-for="tt2">
+      You are close to dangerous area! Get out!
     </div>
   </div>
 </div>

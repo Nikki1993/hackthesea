@@ -6,7 +6,15 @@ img {
 .ship-content {
   position: relative;
 
-  i {
+  #tt1 {
     position: absolute;
+    top: 209px;
+    left: 433px;
+  }
+
+  #tt2 {
+    position: absolute;
+    top: 175px;
+    left: 393px;
   }
 }

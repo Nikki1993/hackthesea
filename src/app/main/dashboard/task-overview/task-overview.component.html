@@ -1,13 +1,15 @@
 <table class="mdl-data-table mdl-js-data-table">
   <thead>
     <tr>
+      <th class="mdl-data-table__cell--non-numeric">Num</th>
       <th class="mdl-data-table__cell--non-numeric">Task</th>
       <th class="mdl-data-table__cell--non-numeric">Status</th>
-      <th class="mdl-data-table__cell--non-numeric">Risk Lvl</th>
+      <th class="mdl-data-table__cell--non-numeric">Difficulty</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of tasks" [attr.data-tag]="item.tag" appRiskLevel [tag]="item.tag">
+    <tr *ngFor="let item of tasks" appRiskLevel [tag]="item.risk">
+      <td>{{item.taskNum}}</td>
       <td class="mdl-data-table__cell--non-numeric">{{item.name}}</td>
       <td class="mdl-data-table__cell--non-numeric">{{item.status}}</td>
       <td class="mdl-data-table__cell--non-numeric">{{item.risk}}</td>
